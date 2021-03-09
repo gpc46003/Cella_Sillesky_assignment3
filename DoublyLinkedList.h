@@ -1,31 +1,33 @@
-#ifndef DOUBLYLINKEDLIST_H
-#define DOUBLYLINKEDLIST_H
+#include<iostream>
+#include<fstream>
+#include<string>
+#include <vector>
+#include <sstream>
+#include <list>
 
 using namespace std;
 
-template <class Type>
+template <class T>
 struct NodeType {  
   T data;
-  NodeType<Type> *next;
-  NodeType<Type> *back;  
+  NodeType<T> *next;
+  NodeType<T> *back;  
 };
 
-template <class Type>
+template <class T>
 class DoublyLinkedList {
 public:
   DoublyLinkedList();
   ~DoublyLinkedList();
-  void insertItem(T &item);
-  void deleteItem(T &item);
-  int lengthIs() const;
   void print();
   void printReverse();
-  //deleteSubsection
-  //mode
-  //swapAlternate
+  int lengthIs() const;
+  void insertItem(T &item);
+  void deleteItem(T &item);
+  //void deleteSub();
+  //T mode();
+  //void swapAlt();
 private:
   NodeType<T> *head;
   NodeType<T> *tail;
 };
-
-#endif
