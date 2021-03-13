@@ -1,5 +1,9 @@
 #include "DoublyLinkedList.h"
-
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <list>
+using std::ios;
 using namespace std;
 
 //Post-Condition: the list is created.
@@ -123,13 +127,16 @@ T DoublyLinkedList<T>::mode() {
   int counter = 0;
   int mode = 0;
   int bigMode = 0;
-  
+
+  //iterate
   while (placeHolder->next != NULL) {
 
     temp = head;
     mode = 0;
     counter = 0;
     while (temp != NULL) {
+
+      // get numb
       if (placeHolder->data == temp->data) {
 	counter++;
 	mode = counter;
@@ -142,9 +149,6 @@ T DoublyLinkedList<T>::mode() {
   }
   placeHolder = placeHolder->next;
 }
-  if (counter == 0) {
-    return head->data;
-  }
   
   return modeNode->data;
 
