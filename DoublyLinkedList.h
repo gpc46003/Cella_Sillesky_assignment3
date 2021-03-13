@@ -25,7 +25,7 @@ public:
   void insertItem(T &item);
   void deleteItem(T &item);
   //void deleteSub();
-  //T mode();
+  T mode();
   //void swapAlt();
 private:
   NodeType<T> *head;

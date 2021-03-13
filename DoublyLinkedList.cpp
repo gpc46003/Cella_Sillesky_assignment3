@@ -80,8 +80,8 @@ void DoublyLinkedList<T>::insertItem(T &item) {
   
   // if list is empty 
   if(head == NULL) {
-        head = node;
-        tail = node;  
+    head = node;
+    tail = node;  
   }
   //insert middle
   else if(head->data >= item) { 
@@ -110,6 +110,43 @@ void DoublyLinkedList<T>::insertItem(T &item) {
 //not present in the list, print the message that is shown in the example output
 template <class T>
 void DoublyLinkedList<T>::deleteItem(T &item) {
+
+}
+
+template <class T>
+T DoublyLinkedList<T>::mode() {
+  NodeType<T> *temp;
+  NodeType<T> *modeNode;
+  NodeType<T> *placeHolder;
+  temp = head;
+  placeHolder = head;
+  int counter = 0;
+  int mode = 0;
+  int bigMode = 0;
+  
+  while (placeHolder->next != NULL) {
+
+    temp = head;
+    mode = 0;
+    counter = 0;
+    while (temp != NULL) {
+      if (placeHolder->data == temp->data) {
+	counter++;
+	mode = counter;
+      }      
+      temp = temp->next; 		
+    }
+    if (bigMode < mode) {
+      bigMode = mode;
+      modeNode = placeHolder;
+  }
+  placeHolder = placeHolder->next;
+}
+  if (counter == 0) {
+    return head->data;
+  }
+  
+  return modeNode->data;
 
 }
 
