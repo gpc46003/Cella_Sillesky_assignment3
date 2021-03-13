@@ -40,8 +40,10 @@ void DoublyLinkedList<T>::print() {
 template <class T>
 void DoublyLinkedList<T>::printReverse() {
   NodeType<T> *temp; //pointer to traverse the list
-  temp = tail; //set current to point to the first node
+  temp = tail; //set current to point to the last node
+  
   while(temp != nullptr) {
+
     cout << temp->data << " "; //output info
     temp = temp->back;
   }
@@ -81,11 +83,13 @@ void DoublyLinkedList<T>::insertItem(T &item) {
         head = node;
         tail = node;  
   }
+  //insert middle
   else if(head->data >= item) { 
     node->next = head; 
     node->next->back = node; 
     head = node; 
-  }   
+  }
+  //insert end
   else { 
     temp = head; 
     while(temp->next != NULL && temp->next->data < node->data) {
@@ -96,7 +100,8 @@ void DoublyLinkedList<T>::insertItem(T &item) {
       node->next->back = node; 
     }
     temp->next = node; 
-    node->back = temp; 
+    node->back = temp;
+    tail = node;
   }
 }
 
