@@ -30,7 +30,7 @@ void runCommands(DoublyLinkedList<T> list){
       cout << "Item to delete: ";
       cin >> item;
       cout << endl;
-      //list.deleteItem(); 
+      list.deleteItem(item); 
       list.print();   
     }
     else if(command == "l") { 

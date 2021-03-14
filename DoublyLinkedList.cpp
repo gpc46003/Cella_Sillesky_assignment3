@@ -115,6 +115,37 @@ void DoublyLinkedList<T>::insertItem(T &item) {
 template <class T>
 void DoublyLinkedList<T>::deleteItem(T &item) {
 
+  NodeType<T> *temp = head;
+  
+  if(head == nullptr){ // if list is empty
+    cout << "You cannot delete from an empty list" << endl;
+    return;
+  }
+
+  if (head->data == item) { //delete first element
+    head = head->next; //head = second element
+    return;
+  }
+ 
+  while (temp != nullptr) {
+
+    //find item to delete
+    if (temp->data == item) {
+      temp->back->next = temp->next;
+      temp = nullptr;
+      delete temp;
+      return;
+    }
+    temp = temp->next;
+
+  }
+
+  //no item to delete
+  if (temp == nullptr) {
+    cout << "Item not in list!" << endl;
+  
+  }   
+   
 }
 
 template <class T>
@@ -146,9 +177,9 @@ T DoublyLinkedList<T>::mode() {
     if (bigMode < mode) {
       bigMode = mode;
       modeNode = placeHolder;
+    }
+    placeHolder = placeHolder->next;
   }
-  placeHolder = placeHolder->next;
-}
   
   return modeNode->data;
 
