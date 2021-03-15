@@ -27,7 +27,7 @@ public:
   void readFile(char *input);
   //void deleteSub();
   T mode();
-  //void swapAlt();
+  void swapAlt();
 private:
   NodeType<T> *head;
   NodeType<T> *tail;

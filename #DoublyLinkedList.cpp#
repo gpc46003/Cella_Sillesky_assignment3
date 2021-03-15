@@ -133,8 +133,6 @@ void DoublyLinkedList<T>::deleteItem(T &item) {
     if (temp->data == item) {
       temp->back->next = temp->next; 
 
-      //      temp = nullptr;
-
       delete temp;
       return;
     }
