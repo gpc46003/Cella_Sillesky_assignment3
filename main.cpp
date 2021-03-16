@@ -1,10 +1,9 @@
 #include "DoublyLinkedList.h"
 
 using namespace std;
-  string command;
-  string line; //line from input text
-  string token; //individual elements
-
+string command;
+string line; //line from input text
+string token; //individual elements
 
 template <class T>
 void runCommands(DoublyLinkedList<T> list){
@@ -40,7 +39,7 @@ void runCommands(DoublyLinkedList<T> list){
       list.print();     
     }
     else if(command == "b") {
-      int lb, ub; 
+      T lb, ub; 
       cout << "Enter lower bound: ";
       cin >> lb;
       cout << endl;
@@ -49,13 +48,13 @@ void runCommands(DoublyLinkedList<T> list){
       cout << endl;
       cout << "Original List: ";
       list.print();
-      //list.deleteSub();
-      cout << "Modified List: ";       
+      list.deleteSub(lb, ub);
+      cout << "\nModified List: ";       
       list.print();
     }
     else if(command == "m") { 
       list.print();
-      cout << "Mode: " << list.mode() << endl;
+      cout << "\nMode: " << list.mode() << endl;
     }
     else if(command == "r") {  
       list.printReverse();  
@@ -71,10 +70,8 @@ void runCommands(DoublyLinkedList<T> list){
       cout << "Invalid command, try again!" << endl; //wrong command    
     }
   } 
-  while(command != "q"); //repeat until user types 'q'
-   
+  while(command != "q"); //repeat until user types 'q'   
 }
-
 
 int main(int argc, char *argv[]) {
   
@@ -88,7 +85,6 @@ int main(int argc, char *argv[]) {
     exit(1);    
   } 
   else {      
-
     string listType;
     cout << "\nEnter list type (i - int, f - float, s - std::string): ";
     cin >> listType;
@@ -96,44 +92,39 @@ int main(int argc, char *argv[]) {
     cout << "insert (i), delete (d), length (l), print (p), deleteSub (b), mode (m), printReverse (r), swapAlt (s), quit (q)" <<endl;   
 
     if(listType == "s" || listType == "i" || listType == "f") {
-
       if (listType == "s") {
-	getline(inputFile, line); //converts file to string   
-	istringstream iss(line);
-
-	if(line != " ") { //if file not empty
-	  while(getline(iss, token, ' ')){   
-	    string item = token;
-	  stringList.insertItem(item); //added to list
-	  }
-	}
-	runCommands(stringList);
-      }	
-      
+      	getline(inputFile, line); //converts file to string   
+      	istringstream iss(line);      
+      	if(line != " ") { //if file not empty
+      	  while(getline(iss, token, ' ')){   
+      	    string item = token;
+      	  stringList.insertItem(item); //added to list
+      	  }
+      	}
+      	runCommands(stringList);
+      }	      
       else if (listType == "i") { //int
-	getline(inputFile, line); //converts file to string   
-	istringstream iss(line);
-
-	if(line != " ") { //if file not empty     
-	  while(getline(iss, token, ' ')){           
-	    int item = stoi(token);
-	    intList.insertItem(item); //added to list          
-	  }
-	}
-	runCommands(intList);
+      	getline(inputFile, line); //converts file to string   
+      	istringstream iss(line);
+      	if(line != " ") { //if file not empty     
+      	  while(getline(iss, token, ' ')){           
+      	    int item = stoi(token);
+      	    intList.insertItem(item); //added to list          
+      	  }
+      	}
+      	runCommands(intList);
       }
-
       else if (listType == "f") { //float
-	getline(inputFile, line); //converts file to string   
-	istringstream iss(line);
-
-	if(line != " ") { //if file not empty
-	  while(getline(iss, token, ' ')){   
-	    float item = stof(token);
-	    floatList.insertItem(item); //added to list
-	  }
-	}
-	runCommands(floatList);
+      	getline(inputFile, line); //converts file to string   
+      	istringstream iss(line);
+      
+      	if(line != " ") { //if file not empty
+      	  while(getline(iss, token, ' ')){   
+      	    float item = stof(token);
+      	    floatList.insertItem(item); //added to list
+      	  }
+      	}
+      	runCommands(floatList);
       }
     }
     else {
