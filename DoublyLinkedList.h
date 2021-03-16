@@ -25,7 +25,7 @@ public:
   void insertItem(T &item);
   void deleteItem(T &item);
   void readFile(char *input);
-  //void deleteSub();
+  void deleteSub();
   T mode();
   void swapAlt();
 private:
