@@ -62,8 +62,8 @@ void runCommands(DoublyLinkedList<T> list){
     else if(command == "s") {
       cout << "Original List: ";
       list.print();
-      //list.swapAlt();
-      cout << "Swapped List: ";       
+      list.swapAlt();
+      cout << "\nSwapped List: ";       
       list.print();  
     }
     else {
