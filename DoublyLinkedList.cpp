@@ -195,7 +195,7 @@ void DoublyLinkedList<T>::deleteSub(T &lb, T &ub){
       head = head->next;
       head->back = nullptr;
       delete lowerBound;
-      deleteSub(lb,ub);
+      deleteSub(lb,ub); //repeat until none left
       return;
     }
     //last elements in list
@@ -203,7 +203,7 @@ void DoublyLinkedList<T>::deleteSub(T &lb, T &ub){
       tail = tail->back;
       tail->next = nullptr;
       delete lowerBound;
-      deleteSub(lb,ub);
+      deleteSub(lb,ub); //repeat until none left
       return;
     }
     //only element in list
@@ -214,6 +214,7 @@ void DoublyLinkedList<T>::deleteSub(T &lb, T &ub){
       return;
     }
     else{
+      //middle elements
       upperBound = tail;
       while(upperBound != nullptr && upperBound->data > ub){ //iterates until ub is found
         upperBound = upperBound->back;
@@ -228,7 +229,7 @@ void DoublyLinkedList<T>::deleteSub(T &lb, T &ub){
         while(lowerBound != upperBound){
           middleContent = lowerBound;
           lowerBound = lowerBound->next;
-          delete middleContent;
+          delete middleContent; //remove middle sublist
         }
       }
       return;
