@@ -104,7 +104,9 @@ void DoublyLinkedList<T>::insertItem(T &item) {
     }
     temp->next = node; 
     node->back = temp;
+    if (node->next == NULL) {
     tail = node;
+    }
   }
 }
 
@@ -242,7 +244,100 @@ void DoublyLinkedList<T>::deleteSub(T &lb, T &ub){
 //Implement this function by changing pointers to nodes only. Do not
 //copy the item type objects inside nodes and swap them to implement this function.
 //Coded by: Eliza
-void swapAlt() {   
+template <class T>
+void DoublyLinkedList<T>::swapAlt() {   
+ NodeType<T> *temp = head->next;
+  NodeType<T> *tempHead;
+
+  if (head == nullptr || head->next == nullptr ) {
+    return;
+  }
+  //insert beginning                                                               
+  if (lengthIs() < 3) {
+
+    head->back = temp;
+    head->next = temp->next;
+    temp->next = head;
+
+    temp->back = nullptr;
+
+    tempHead = head;
+
+    head = temp;
+    temp = tempHead;
+
+
+  } else {
+
+    head->back = temp;
+    head->next = temp->next;
+    temp->next = head;
+
+    head->next->back = head;
+    temp->back = nullptr;
+
+    tempHead = head;
+
+    head = temp;
+    temp = tempHead;
+
+    temp = temp->next->next;
+
+    // 4 in list              
+	  if (lengthIs() % 2 == 0 && temp->next == NULL) {
+      NodeType<T> *tempTail = tail->back;
+      cout << "" << endl;
+      tail->next = tempTail;
+
+      tail->back = tempTail->back;
+
+      tempTail->back = tail;
+
+      tempTail->next = nullptr;
+
+      tail->back->next = tail;
+
+      tail = tail->next;
+
+      temp = nullptr;
+    } else {
+
+      while (temp != nullptr) {
+
+        //middle 
+	      temp->next->back = temp->back;
+        temp->back->next = temp->next;
+        temp->next = temp->back;
+
+
+        temp->back = temp->back->back;
+        temp->back->next = temp;
+        temp->next->back = temp;
+
+        temp = temp->next->next->next;
+
+        //back of list if list is even                                             
+        if (lengthIs() % 2 == 0 && temp->next == NULL) {
+          NodeType<T> *tempTail = tail->back;
+
+
+          tail->next = tempTail;
+
+          tail->back = tempTail->back;
+
+          tempTail->back = tail;
+		tempTail->next = nullptr;
+
+          tail->back->next = tail;
+
+          tail = tail->next;
+
+          temp = nullptr;
+        }
+
+      }
+    }
+  }
 
 }
 
