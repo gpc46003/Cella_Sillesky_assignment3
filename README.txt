@@ -120,8 +120,8 @@ T DoublyLinkedList<T>::mode() {
     counter = 0;  <--------------------------------- 1
     while (temp != nullptr) {  <-------------------- n
       if (placeHolder->data == temp->data) {
-	      counter++;  <------------------------------- 1
-	      mode = counter; <--------------------------- 1
+	      counter++;  <------------------------- 1
+	      mode = counter; <--------------------- 1
       }      
       temp = temp->next;  <------------------------- 1	
     }
