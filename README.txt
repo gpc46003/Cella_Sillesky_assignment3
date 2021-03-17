@@ -153,3 +153,10 @@ swapAlternative Function:
 ****CODE****
 
 ****EXPLAIN****
+Time complexity:  1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 +n(1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1)
+= 16n + 49
+Big-O (Worst Case):
+If complexity is a polynomial, variable with highest exponent is the worst case scenario.
+Notation would be O(n) which takes into account having to iterate through whole list.
+
+Improvements: Instead of having two of the same if statements to handle the swap at the end of the list, reduce it to one.
